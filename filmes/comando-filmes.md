@@ -1,0 +1,7 @@
+# COMANDO SQL - REFERENCIA
+
+## MODELAGEM FÍSICA
+
+```sql
+    CREATE DATABASE cinema CHARACTER SET utf8mb4
+```
