@@ -4,6 +4,7 @@
 ```sql
 
 -- 1ª Digitação (SQL para criar o Banco de dados)
+CREATE DATABASE tecdev_escola_gabriela;
 
 ```
 <!-- ____________________________________________________________________ -->
@@ -11,7 +12,13 @@
 ```sql
 
 -- 2ª Digitação (SQL para criar a tabela Cursos)
-
+sql
+CREATE TABLE cursos (
+    id SMALLINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    titulo VARCHAR(30) NOT NULL,
+    carga_horaria TEXT(1000) NOT NULL,
+    professor_id SMALLINT NOT NULL
+);
 
 ```
 <!-- ____________________________________________________________________ -->
@@ -19,7 +26,13 @@
 ```sql
 
 -- 3ª Digitação (SQL para criar a tabela Professores)
-
+sql
+CREATE TABLE professores (
+    id SMALLINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL,
+    area_de_atuacao ENUM ( 'infra', 'design', 'desenvolvimento') NOT NULL,
+    curso_id SMALLINT NOT NULL
+);
 
 ```
 <!-- ____________________________________________________________________ -->
@@ -27,6 +40,15 @@
 ```sql
 
 -- 4ª Digitação (SQL para criar a tabela Alunos)
+sql
+CREATE TABLE alunos (
+    id SMALLINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(30) NOT NULL,
+    data_de_nascimento DATE NOT NULL,
+    primeira_nota DECIMAL (4,2) NOT NULL,
+    secunda_nota DECIMAL (4,2) NOT NULL,
+    curso_id SMALLINT NOT NULL
+);
 
 
 ```
@@ -190,7 +212,7 @@ INSERT INTO alunos (nome, data_de_nascimento,primeira_nota, segunda_nota, curso_
 ```sql
 
 -- 5ª Digitação (SQL para criar a consulta acima)
-
+SELECT * from alunos WHERE data_de_nascimento <=2009;
 ```
 ![Relatório 1](resultados/relatorio1.jpg)
 
@@ -199,6 +221,7 @@ INSERT INTO alunos (nome, data_de_nascimento,primeira_nota, segunda_nota, curso_
 ```sql
 
 -- 6ª Digitação (SQL para criar a consulta acima)
+SELECT (AVG(primeira_nota + segunda_nota), 2) AS "Média das notas" from alunos;
 
 
 ```
@@ -209,7 +232,8 @@ INSERT INTO alunos (nome, data_de_nascimento,primeira_nota, segunda_nota, curso_
 ```sql
 
 -- 7ª Digitação (SQL para criar a consulta acima)
-
+-- Filtro que ordena pelo nome (AZ) Crescente
+SELECT titulo  FROM cursos ORDER BY nome;
 ```
 ![Relatório 3](resultados/relatorio3.jpg)
 
